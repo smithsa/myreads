@@ -5,7 +5,11 @@ import {Link} from 'react-router-dom';
 
 class SearchBooks extends Component{
     state = {
-        query : ''
+        query : '',
+        books: []
+    }
+    queryUpdateHandler = (e) => {
+        this.setState({query: e.target.value});
     }
     render(){
         return (
@@ -15,12 +19,12 @@ class SearchBooks extends Component{
                         <button className="close-search">Close</button>
                     </Link>
                     <div className="search-books-input-wrapper">
-                        <input type="text" value={this.state.query} placeholder="Search by title or author"/>
+                        <input type="text" onChange={this.queryUpdateHandler} value={this.state.query} placeholder="Search by title or author"/>
                     </div>
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {this.props.books.filter((book) => {
+                        {this.state.books.filter((book) => {
                             return (book.title.indexOf(this.state.query) > -1);
                         }).map((book, key) => {
                             return <Book key={`${book.name}-${key}`} book={book} bookShelves={this.props.bookShelves} />;

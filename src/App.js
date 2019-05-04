@@ -20,33 +20,14 @@ const bookShelves = [
     }
 ];
 class BooksApp extends React.Component {
-  state = {
-    books: []
-  }
-  componentDidMount(){
-      BooksAPI.getAll().then((books) =>{
-        this.setState({books});
-      });
-  }
-  updateBookShelf = (book, shelf) => {
-      let books = this.state.books.map((currentBook) =>{
-          if(currentBook.id === book.id){
-              currentBook.shelf = shelf;
-              BooksAPI.update(book, shelf);
-          }
-          return currentBook;
-      });
-      this.setState({books});
-  }
-
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={()=>(
-            <ListBooks updateBookShelf={this.updateBookShelf} bookShelves={bookShelves} books={this.state.books} />
+            <ListBooks bookShelves={bookShelves} />
         )} />
         <Route exact path="/search" render={()=> (
-            <SearchBooks bookShelves={bookShelves} books={this.state.books} />
+            <SearchBooks bookShelves={bookShelves} />
         )}/>
       </div>
     )

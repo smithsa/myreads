@@ -21,7 +21,7 @@ class BookShelfChanger extends Component{
 
 BookShelfChanger.propTypes = {
     shelfValue : PropTypes.string,
-    bookID : PropTypes.number,
+    bookID : PropTypes.string,
     bookShelves: PropTypes.array
 };
 

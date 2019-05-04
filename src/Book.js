@@ -7,11 +7,13 @@ const Book = (props) => {
         <li key={props.book.id}>
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${props.book.imageUrl}")` }}></div>
-                    <BookShelfChanger bookID={props.book.bookID} shelfValue={props.book.state} bookShelves={props.bookShelves} />
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${props.book.imageLinks.thumbnail}")` }}></div>
+                    <BookShelfChanger bookID={props.book.id} shelfValue={props.book.shelf} bookShelves={props.bookShelves} />
                 </div>
                 <div className="book-title">{props.book.title}</div>
-                <div className="book-authors">{props.book.author}</div>
+                <div className="book-authors">{props.book.authors.map((author, index) => {
+                    return <div key={`${author}-${index}`}>{author}</div>
+                })}</div>
             </div>
         </li>
     );

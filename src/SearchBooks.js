@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Book from "./Book";
+import {Link} from 'react-router-dom';
 
 class SearchBooks extends Component{
     state = {
@@ -10,8 +11,9 @@ class SearchBooks extends Component{
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    {/* TODO: add a Link here */}
-                    <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+                    <Link to='/'>
+                        <button className="close-search">Close</button>
+                    </Link>
                     <div className="search-books-input-wrapper">
                         <input type="text" value={this.state.query} placeholder="Search by title or author"/>
                     </div>

@@ -3,6 +3,12 @@ import BookShelfChanger from './BookShelfChanger';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
+    let authors = '';
+    if(props.book.hasOwnProperty('authors')){
+        authors =  <div className="book-authors">{props.book.authors.map((author, index) => {
+            return <div key={`${author}-${index}`}>{author}</div>
+        })}</div>;
+    }
     return (
         <li key={props.book.id}>
             <div className="book">
@@ -11,9 +17,7 @@ const Book = (props) => {
                     <BookShelfChanger updateBookShelf={props.updateBookShelf} book={props.book} bookShelves={props.bookShelves} />
                 </div>
                 <div className="book-title">{props.book.title}</div>
-                <div className="book-authors">{props.book.authors.map((author, index) => {
-                    return <div key={`${author}-${index}`}>{author}</div>
-                })}</div>
+                {authors}
             </div>
         </li>
     );

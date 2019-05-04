@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Book from "./Book";
 import {Link} from 'react-router-dom';
+import * as BooksAPI from "./BooksAPI";
 
 class SearchBooks extends Component{
     state = {
@@ -9,7 +10,31 @@ class SearchBooks extends Component{
         books: []
     }
     queryUpdateHandler = (e) => {
-        this.setState({query: e.target.value});
+        let curQueryValue = e.target.value;
+        this.setState({query: curQueryValue});
+        if(curQueryValue !== ''){
+            BooksAPI.search(curQueryValue).then((books) =>{
+                if(books instanceof Array){
+                    console.log(books);
+                    this.setState({books});
+                }else{
+                    this.setState({books: []});
+                }
+            });
+        }else{
+            this.setState({books: []});
+        }
+    }
+    updateBookShelf = (book, shelf) => {
+        let books = this.state.books.filter((currentBook) =>{
+            if(currentBook.id === book.id){
+                currentBook.shelf = shelf;
+                BooksAPI.update(book, shelf);
+                return false;
+            }
+            return true;
+        });
+        this.setState({books});
     }
     render(){
         return (
@@ -25,9 +50,11 @@ class SearchBooks extends Component{
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.state.books.filter((book) => {
-                            return (book.title.indexOf(this.state.query) > -1);
+                            let bookTitle = book.title.toLowerCase();
+                            let userQuery = this.state.query.toLowerCase();
+                            return (bookTitle.indexOf(userQuery) > -1);
                         }).map((book, key) => {
-                            return <Book key={`${book.name}-${key}`} book={book} bookShelves={this.props.bookShelves} />;
+                            return <Book key={`${book.name}-${key}`} book={book} bookShelves={this.props.bookShelves} updateBookShelf={this.updateBookShelf} />;
                         })}
                     </ol>
                 </div>
@@ -37,7 +64,6 @@ class SearchBooks extends Component{
 }
 
 SearchBooks.propTypes = {
-    books: PropTypes.array,
     bookShelves: PropTypes.array
 };
 

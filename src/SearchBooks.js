@@ -15,7 +15,6 @@ class SearchBooks extends Component{
         if(curQueryValue !== ''){
             BooksAPI.search(curQueryValue).then((books) =>{
                 if(books instanceof Array){
-                    console.log(books);
                     this.setState({books});
                 }else{
                     this.setState({books: []});
@@ -24,17 +23,6 @@ class SearchBooks extends Component{
         }else{
             this.setState({books: []});
         }
-    }
-    updateBookShelf = (book, shelf) => {
-        let books = this.state.books.filter((currentBook) =>{
-            if(currentBook.id === book.id){
-                currentBook.shelf = shelf;
-                BooksAPI.update(book, shelf);
-                return false;
-            }
-            return true;
-        });
-        this.setState({books});
     }
     render(){
         return (
@@ -54,7 +42,12 @@ class SearchBooks extends Component{
                             let userQuery = this.state.query.toLowerCase();
                             return (bookTitle.indexOf(userQuery) > -1);
                         }).map((book, key) => {
-                            return <Book key={`${book.name}-${key}`} book={book} bookShelves={this.props.bookShelves} updateBookShelf={this.updateBookShelf} />;
+                            let searchedBook = this.props.books.find((queriedBook) => (queriedBook.id === book.id));
+                            let bookOb = book;
+                            if(searchedBook){
+                                bookOb = searchedBook;
+                            }
+                            return <Book key={`${book.name}-${key}`} book={bookOb} bookShelves={this.props.bookShelves} updateBookShelf={this.props.updateBookShelf} />;
                         })}
                     </ol>
                 </div>

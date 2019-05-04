@@ -3,34 +3,56 @@ import './App.css';
 import ListBooks from './ListBooks';
 import SearchBooks from './SearchBooks';
 import {Route} from 'react-router-dom';
+import * as BooksAPI from "./BooksAPI";
 
 const bookShelves = [
     {
       name:'Currently Reading' ,
-      value: 'currentlyReading'
+      value: 'currentlyReading',
+      shelf: []
     },
     {
       name:'Want to Read' ,
-      value: 'wantToRead'
+      value: 'wantToRead',
+      shelf: []
     },
     {
       name:'Read' ,
-      value: 'read'
+      value: 'read',
+      shelf: []
     }
 ];
 class BooksApp extends React.Component {
-  render() {
-    return (
-      <div className="app">
-        <Route exact path="/" render={()=>(
-            <ListBooks bookShelves={bookShelves} />
-        )} />
-        <Route exact path="/search" render={()=> (
-            <SearchBooks bookShelves={bookShelves} />
-        )}/>
-      </div>
-    )
-  }
+    state = {
+        books: []
+    }
+    updateBookShelf = (book, shelf) => {
+        let books = this.state.books.map((currentBook) =>{
+            if(currentBook.id === book.id){
+                currentBook.shelf = shelf;
+                BooksAPI.update(book, shelf);
+            }
+            return currentBook;
+        });
+        this.setState({books});
+    }
+    componentDidMount(){
+        BooksAPI.getAll().then((books) =>{
+            this.setState({books});
+        });
+    }
+    render() {
+        return (
+          <div className="app">
+            <Route exact path="/" render={()=>(
+                <ListBooks updateBookShelf={this.updateBookShelf} books={this.state.books} bookShelves={bookShelves} />
+            )} />
+            <Route exact path="/search" render={()=> (
+                <SearchBooks updateBookShelf={this.updateBookShelf} books={this.state.books} bookShelves={bookShelves} />
+            )}/>
+          </div>
+        )
+    }
 }
 
 export default BooksApp

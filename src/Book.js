@@ -8,7 +8,7 @@ const Book = (props) => {
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${props.book.imageLinks.thumbnail}")` }}></div>
-                    <BookShelfChanger bookID={props.book.id} shelfValue={props.book.shelf} bookShelves={props.bookShelves} />
+                    <BookShelfChanger updateBookShelf={props.updateBookShelf} book={props.book} bookShelves={props.bookShelves} />
                 </div>
                 <div className="book-title">{props.book.title}</div>
                 <div className="book-authors">{props.book.authors.map((author, index) => {
@@ -22,7 +22,9 @@ const Book = (props) => {
 
 Book.propTypes = {
     book: PropTypes.object,
-    bookShelves: PropTypes.array
+    bookShelves: PropTypes.array,
+    updateBookShelf: PropTypes.func
+
 };
 
 export default Book;

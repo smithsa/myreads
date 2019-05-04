@@ -11,7 +11,7 @@ const BookShelf = (props) =>{
                         {props.books.filter((book) => {
                             return props.value === book.shelf;
                         }).map((book, key) => {
-                            return <Book key={`${props.title}-${key}`} book={book} bookShelves={props.bookShelves} />;
+                            return <Book updateBookShelf={props.updateBookShelf} key={`${props.title}-${key}`} book={book} bookShelves={props.bookShelves} />;
                         })}
                 </ol>
             </div>
@@ -23,7 +23,8 @@ BookShelf.propTypes = {
     title: PropTypes.string,
     value: PropTypes.string,
     books: PropTypes.array,
-    bookShelves: PropTypes.array
+    bookShelves: PropTypes.array,
+    updateBookShelf: PropTypes.func
 };
 
 export default BookShelf;

@@ -13,7 +13,7 @@ class ListBooks extends Component{
                 <div className="list-books-content">
                     <div>
                         {this.props.bookShelves.map((bookShelf,index) => {
-                            return <BookShelf key={`${bookShelf.value}-${index}`} value={bookShelf.value} books={this.props.books} bookShelves={this.props.bookShelves} title={bookShelf.name} />;
+                            return <BookShelf updateBookShelf={this.props.updateBookShelf} key={`${bookShelf.value}-${index}`} value={bookShelf.value} books={this.props.books} bookShelves={this.props.bookShelves} title={bookShelf.name} />;
                         })}
                     </div>
                 </div>
@@ -29,7 +29,8 @@ class ListBooks extends Component{
 
 ListBooks.propTypes = {
     bookShelves: PropTypes.array,
-    books: PropTypes.array
+    books: PropTypes.array,
+    updateBookShelf: PropTypes.func
 };
 
 export default ListBooks;

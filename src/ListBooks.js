@@ -28,7 +28,9 @@ class ListBooks extends Component{
 }
 
 ListBooks.propTypes = {
-    bookShelves: PropTypes.array
+    bookShelves: PropTypes.array,
+    books: PropTypes.array,
+    updateBookShelf: PropTypes.func
 };
 
 export default ListBooks;

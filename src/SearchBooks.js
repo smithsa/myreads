@@ -57,7 +57,9 @@ class SearchBooks extends Component{
 }
 
 SearchBooks.propTypes = {
-    bookShelves: PropTypes.array
+    bookShelves: PropTypes.array,
+    books: PropTypes.array,
+    updateBookShelf: PropTypes.func
 };
 
 export default SearchBooks;

@@ -27,14 +27,24 @@ class BooksApp extends React.Component {
         books: []
     }
     updateBookShelf = (book, shelf) => {
-        let books = this.state.books.map((currentBook) =>{
-            if(currentBook.id === book.id){
-                currentBook.shelf = shelf;
-                BooksAPI.update(book, shelf);
-            }
-            return currentBook;
-        });
-        this.setState({books});
+        let existingBook = this.state.books.find((queriedBook) => (book.id === queriedBook.id));
+        if(existingBook){
+            let books = this.state.books.map((currentBook) =>{
+                if(currentBook.id === book.id){
+                    currentBook.shelf = shelf;
+                    BooksAPI.update(book, shelf);
+                }
+                return currentBook;
+            });
+            this.setState({books});
+        }else{
+            BooksAPI.update(book, shelf).then((insertedBook) => {
+                let curBooks = [...this.state.books];
+                curBooks.push(insertedBook);
+                this.setState({books: curBooks});
+            });
+        }
+
     }
     componentDidMount(){
         BooksAPI.getAll().then((books) =>{

@@ -9,9 +9,15 @@ class SearchBooks extends Component{
         query : '',
         books: []
     }
+    //updates the state and search results based on current input
     queryUpdateHandler = (e) => {
         let curQueryValue = e.target.value;
         this.setState({query: curQueryValue});
+        this.updateSearch(curQueryValue);
+
+    }
+    //helper function to make a search call to the API
+    updateSearch = (curQueryValue) => {
         if(curQueryValue !== ''){
             BooksAPI.search(curQueryValue).then((books) =>{
                 if(books instanceof Array){

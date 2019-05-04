@@ -26,6 +26,7 @@ class BooksApp extends React.Component {
     state = {
         books: []
     }
+    //shared function to update the book shelf
     updateBookShelf = (book, shelf) => {
         let existingBook = this.state.books.find((queriedBook) => (book.id === queriedBook.id));
         if(existingBook){

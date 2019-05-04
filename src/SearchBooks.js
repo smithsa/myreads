@@ -19,7 +19,7 @@ class SearchBooks extends Component{
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.props.books.filter((book) => {
-                            return (book.name.indexOf(this.state.query) > -1);
+                            return (book.title.indexOf(this.state.query) > -1);
                         }).map((book, key) => {
                             return <Book key={`${book.name}-${key}`} book={book} bookShelves={this.props.bookShelves} />;
                         })}

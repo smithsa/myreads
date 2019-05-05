@@ -22,6 +22,7 @@ class SearchBooks extends Component{
             BooksAPI.search(curQueryValue).then((books) =>{
                 if(books instanceof Array){
                     this.setState({books});
+                    console.log(books);
                 }else{
                     this.setState({books: []});
                 }
@@ -43,11 +44,7 @@ class SearchBooks extends Component{
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {this.state.books.filter((book) => {
-                            let bookTitle = book.title.toLowerCase();
-                            let userQuery = this.state.query.toLowerCase();
-                            return (bookTitle.indexOf(userQuery) > -1);
-                        }).map((book, key) => {
+                        {this.state.books.map((book, key) => {
                             let searchedBook = this.props.books.find((queriedBook) => (queriedBook.id === book.id));
                             let bookOb = book;
                             if(searchedBook){

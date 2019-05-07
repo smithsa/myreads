@@ -10,6 +10,7 @@ const Book = (props) => {
         })}</div>;
     }
     let thumbnailUrl = props.book.hasOwnProperty('imageLinks') ?  props.book.imageLinks.thumbnail : placeHolderThumbnail;
+    let bookTitle = ( props.book.hasOwnProperty('title') && props.book.title !== '') ? props.book.title : 'N/A';
     return (
         <li key={props.book.id}>
             <div className="book">
@@ -17,7 +18,7 @@ const Book = (props) => {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnailUrl}")` }}></div>
                     <BookShelfChanger updateBookShelf={props.updateBookShelf} book={props.book} bookShelves={props.bookShelves} />
                 </div>
-                <div className="book-title">{props.book.title}</div>
+                <div className="book-title">{bookTitle}</div>
                 {authors}
             </div>
         </li>

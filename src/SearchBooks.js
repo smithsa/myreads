@@ -7,7 +7,8 @@ import * as BooksAPI from "./BooksAPI";
 class SearchBooks extends Component{
     state = {
         query : '',
-        books: []
+        books: [],
+        booksFound: false
     }
     //updates the state and search results based on current input
     queryUpdateHandler = (e) => {
@@ -21,17 +22,18 @@ class SearchBooks extends Component{
         if(curQueryValue !== ''){
             BooksAPI.search(curQueryValue).then((books) =>{
                 if(books instanceof Array){
-                    this.setState({books});
+                    this.setState({books, booksFound: true});
                     console.log(books);
                 }else{
-                    this.setState({books: []});
+                    this.setState({books: [], booksFound: false});
                 }
             });
         }else{
-            this.setState({books: []});
+            this.setState({books: [], booksFound: false});
         }
     }
     render(){
+        let noBooksFoundMsg = <div className="search-not-found">NO BOOKS FOUND</div>;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -43,6 +45,7 @@ class SearchBooks extends Component{
                     </div>
                 </div>
                 <div className="search-books-results">
+                    { !this.state.booksFound || this.state.query === '' ?  noBooksFoundMsg : ''}
                     <ol className="books-grid">
                         {this.state.books.map((book, key) => {
                             let searchedBook = this.props.books.find((queriedBook) => (queriedBook.id === book.id));

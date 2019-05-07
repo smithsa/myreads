@@ -29,6 +29,13 @@ body, .app {
   flex: 1;
 }
 
+.search-not-found{
+  text-align: center;
+  padding-top:50px;
+  font-size: 32px;
+  color: #eeeeee;
+}
+
 .bookshelf {
   padding: 0 10px 20px;
 }

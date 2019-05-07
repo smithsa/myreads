@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import Book from "./Book";
 import {Link} from 'react-router-dom';
 import * as BooksAPI from "./BooksAPI";
+import {debounce} from 'throttle-debounce';
 
 class SearchBooks extends Component{
+    constructor() {
+        super();
+        this.callAjax = debounce(500, this.updateSearch);
+    }
     state = {
         query : '',
         books: [],
@@ -12,10 +17,11 @@ class SearchBooks extends Component{
     }
     //updates the state and search results based on current input
     queryUpdateHandler = (e) => {
-        let curQueryValue = e.target.value;
-        this.setState({query: curQueryValue});
-        this.updateSearch(curQueryValue);
+        this.setState({query: e.target.value});
 
+    }
+    debounceWrapper = (e) => {
+        this.updateSearch(e.target.value);
     }
     //helper function to make a search call to the API
     updateSearch = (curQueryValue) => {
@@ -41,7 +47,7 @@ class SearchBooks extends Component{
                         <button className="close-search">Close</button>
                     </Link>
                     <div className="search-books-input-wrapper">
-                        <input type="text" onChange={this.queryUpdateHandler} value={this.state.query} placeholder="Search by title or author"/>
+                        <input type="text" onKeyUp={this.debounceWrapper.bind(this)} onChange={this.queryUpdateHandler} value={this.state.query} placeholder="Search by title or author"/>
                     </div>
                 </div>
                 <div className="search-books-results">

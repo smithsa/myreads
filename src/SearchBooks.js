@@ -45,7 +45,7 @@ class SearchBooks extends Component{
                     </div>
                 </div>
                 <div className="search-books-results">
-                    { !this.state.booksFound || this.state.query === '' ?  noBooksFoundMsg : ''}
+                    { !this.state.booksFound && this.state.query !== '' ?  noBooksFoundMsg : ''}
                     <ol className="books-grid">
                         {this.state.books.map((book, key) => {
                             let searchedBook = this.props.books.find((queriedBook) => (queriedBook.id === book.id));

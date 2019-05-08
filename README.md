@@ -63,9 +63,14 @@ With the app users can perform 3 main tasks (1) sort books on bookshelves (2) se
 
 ** 1. Sort Books **
 
+![Sort books demo](src/images/documentation/sort-books?raw=true)
+
 ** 2. Search Books **
+![Search books demo](src/images/documentation/search-books?raw=true)
 
 ** 3. Add Book to Shelf **
+![Add book to shelf demo](src/images/documentation/add-from-search?raw=true)
+
 
 ## Backend Server
 

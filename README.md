@@ -63,13 +63,13 @@ With the app users can perform 3 main tasks (1) sort books on bookshelves (2) se
 
 ** 1. Sort Books **
 
-![Sort books demo](src/images/documentation/sort-books?raw=true)
+![Sort books demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/sort-books.gif?raw=true)
 
 ** 2. Search Books **
-![Search books demo](src/images/documentation/search-books?raw=true)
+![Search books demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/search-books.gif?raw=true)
 
 ** 3. Add Book to Shelf **
-![Add book to shelf demo](src/images/documentation/add-from-search?raw=true)
+![Add book to shelf demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/add-from-search.gif?raw=true)
 
 
 ## Backend Server

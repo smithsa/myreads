@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c016a98a-7e21-49ca-9d5c-8e4146142020" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/documentation/add-from-search.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/documentation/search-books.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/documentation/sort-books.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -71,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+            <state relative-caret-position="64">
+              <caret line="65" column="111" selection-start-line="65" selection-start-column="111" selection-end-line="65" selection-end-column="111" />
             </state>
           </provider>
         </entry>
@@ -231,12 +227,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556916192069</updated>
       <workItem from="1556916195728" duration="37100000" />
-      <workItem from="1557262381980" duration="5293000" />
+      <workItem from="1557262381980" duration="5610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42393000" />
+    <option name="totallyTimeSpent" value="42710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="89" y="56" width="1087" height="772" extended-state="0" />
@@ -392,8 +388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state relative-caret-position="64">
+          <caret line="65" column="111" selection-start-line="65" selection-start-column="111" selection-end-line="65" selection-end-column="111" />
         </state>
       </provider>
     </entry>

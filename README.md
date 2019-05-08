@@ -61,14 +61,14 @@ MyReads is a React application that tracks and sorts the books you've read and h
 
 With the app users can perform 3 main tasks (1) sort books on bookshelves (2) search for new books, and (3) add new found books to bookshelves.
 
-** 1. Sort Books **
+**1. Sort Books**
 
 ![Sort books demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/sort-books.gif?raw=true)
 
-** 2. Search Books **
+**2. Search Books**
 ![Search books demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/search-books.gif?raw=true)
 
-** 3. Add Book to Shelf **
+**3. Add Book to Shelf**
 ![Add book to shelf demo](https://raw.githubusercontent.com/smithsa/myreads/master/src/images/documentation/add-from-search.gif?raw=true)
 
 
